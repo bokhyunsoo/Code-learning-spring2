@@ -1,4 +1,4 @@
-package com.ex01.www;
+package com.ex01.www.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
