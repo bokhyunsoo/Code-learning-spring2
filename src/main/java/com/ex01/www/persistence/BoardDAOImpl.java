@@ -1,6 +1,7 @@
 package com.ex01.www.persistence;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +26,13 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public void update(BoardVO vo) throws Exception {
-		session.update("board.update", vo);
+	public void update(Map map) throws Exception {
+		session.update("board.update", map);
 	}
 
 	@Override
-	public void delete(Integer bno) throws Exception {
-		session.delete("board.delete", bno);
+	public void delete(Map map) throws Exception {
+		session.delete("board.delete", map);
 	}
 
 	@Override

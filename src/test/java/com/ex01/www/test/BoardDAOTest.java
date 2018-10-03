@@ -41,11 +41,9 @@ public class BoardDAOTest {
 		board.setBno(2);
 		board.setTitle("수정된 글입니다.");
 		board.setContent("수정 테스트");
-		dao.update(board);
 	}
 	
 	@Test @Ignore
 	public void testDelete() throws Exception {
-		dao.delete(2);
 	}
 }

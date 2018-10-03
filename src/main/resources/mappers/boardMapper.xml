@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where bno = #{bno}
 	</update>
 	
-	<delete id="delete">
+	<delete id="delete" parameterType="hashmap">
 	delete from tbl_board where bno = #{bno}
 	</delete>
 	
