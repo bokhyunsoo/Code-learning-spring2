@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ex01.www.domain.BoardVO;
+import com.ex01.www.domain.Criteria;
 import com.ex01.www.service.BoardService;
 
 @Controller
@@ -48,6 +49,12 @@ public class BoardController {
 //		model.addAttribute("result", "success");
 		res.sendRedirect("board/listAll");
 	}*/
+	
+	@RequestMapping(value="listCri", method = RequestMethod.GET)
+	public String listCri(Criteria cri, Model model) throws Exception {
+		model.addAttribute("list", service.listCriteria(cri));
+		return "board/listCri";
+	}
 	
 	@RequestMapping(value="listAll", method = RequestMethod.GET)
 	public void listAll(Model model) throws Exception {
