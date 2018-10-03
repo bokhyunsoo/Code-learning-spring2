@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 <mapper namespace="board">
 	
-	<!-- <insert id="create">
+	<insert id="create">
 	insert into tbl_board (title, content, writer)
 	values(#{title},#{content},#{writer})
 	</insert>
@@ -24,6 +24,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<delete id="delete">
 	delete from tbl_board where bno = #{bno}
-	</delete> -->
+	</delete>
 	
+	<select id="listAll" resultType="com.ex01.www.domain.BoardVO">
+	select bno, title, content, writer, regdate, viewcnt
+	from tbl_board
+	where bno &gt; 0
+	order by bno desc, regdate desc
+	</select>
 </mapper>
