@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ex01.www.domain.BoardVO;
+import com.ex01.www.domain.Criteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -38,6 +39,20 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public List<BoardVO> listAll() throws Exception {
 		return session.selectList("board.listAll");
+	}
+
+	@Override
+	public List<BoardVO> listPage(int page) throws Exception {
+		if(page <= 0) {
+			page = 1;
+		}
+		page = (page - 1) * 10;
+		return session.selectList("board.listPage",page);
+	}
+
+	@Override
+	public List<BoardVO> listCriteria(Criteria cri) throws Exception {
+		return session.selectList("board.listCriteria", cri);
 	}
 	
 }

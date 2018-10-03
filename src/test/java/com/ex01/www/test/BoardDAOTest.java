@@ -1,5 +1,7 @@
 package com.ex01.www.test;
 
+import java.util.List;
+
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ex01.www.domain.BoardVO;
+import com.ex01.www.domain.Criteria;
 import com.ex01.www.persistence.BoardDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -30,7 +33,7 @@ public class BoardDAOTest {
 		dao.create(board);
 	}
 
-	@Test
+	@Test @Ignore
 	public void testRead() throws Exception {
 		logger.info(dao.read(3).toString());
 	}
@@ -45,5 +48,28 @@ public class BoardDAOTest {
 	
 	@Test @Ignore
 	public void testDelete() throws Exception {
+	}
+	
+	@Test @Ignore
+	public void testListPage() throws Exception {
+		int page = 2;
+		
+		List<BoardVO> list = dao.listPage(page);
+		
+		for(BoardVO boardVO : list) {
+			logger.info(boardVO.getBno() + " : " + boardVO.getTitle());
+		}
+	}
+	
+	@Test
+	public void testListCriteria() throws Exception {
+		Criteria cri = new Criteria();
+		cri.setPage(2);
+		cri.setPerPageNum(10);
+		List<BoardVO> list = dao.listCriteria(cri);
+		
+		for(BoardVO boardVO : list) {
+			logger.info(boardVO.getBno() + " : " + boardVO.getTitle());
+		}
 	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.ex01.www.domain.BoardVO;
+import com.ex01.www.domain.Criteria;
 
 public interface BoardService {
 	public void regist(BoardVO board) throws Exception;
@@ -15,4 +16,6 @@ public interface BoardService {
 	public void remove(Map map) throws Exception;
 	
 	public List<BoardVO> listAll() throws Exception;
+	
+	public List<BoardVO> listCriteria(Criteria cri) throws Exception;
 }

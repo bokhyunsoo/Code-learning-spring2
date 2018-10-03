@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ex01.www.domain.BoardVO;
+import com.ex01.www.domain.Criteria;
 import com.ex01.www.persistence.BoardDAO;
 
 @Service
@@ -38,6 +39,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVO> listAll() throws Exception {
 		return dao.listAll();
+	}
+
+	@Override
+	public List<BoardVO> listCriteria(Criteria cri) throws Exception {
+		return dao.listCriteria(cri);
 	}
 
 }
