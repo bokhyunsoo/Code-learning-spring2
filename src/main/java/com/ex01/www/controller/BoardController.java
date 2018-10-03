@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ex01.www.domain.BoardVO;
 import com.ex01.www.domain.Criteria;
+import com.ex01.www.domain.PageMaker;
 import com.ex01.www.service.BoardService;
 
 @Controller
@@ -54,6 +55,17 @@ public class BoardController {
 	public String listCri(Criteria cri, Model model) throws Exception {
 		model.addAttribute("list", service.listCriteria(cri));
 		return "board/listCri";
+	}
+	
+	@RequestMapping("listPage")
+	public String listPage(Criteria cri, Model model) throws Exception {
+		logger.info(cri.toString());
+		model.addAttribute("list", service.listCriteria(cri));
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(13);
+		model.addAttribute("pageMaker", pageMaker);
+		return "board/listPage";
 	}
 	
 	@RequestMapping(value="listAll", method = RequestMethod.GET)
