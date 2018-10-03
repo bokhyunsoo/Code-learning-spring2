@@ -9,4 +9,7 @@
 		<setting name="cacheEnabled" value="false" />
 	</settings>
 	
+	<typeAliases>
+		<package name="com.ex01.www.domain"/>
+	</typeAliases>
 </configuration>

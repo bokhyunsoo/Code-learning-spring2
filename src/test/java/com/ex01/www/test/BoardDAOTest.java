@@ -30,9 +30,9 @@ public class BoardDAOTest {
 		dao.create(board);
 	}
 
-	@Test @Ignore
+	@Test
 	public void testRead() throws Exception {
-		logger.info(dao.read(2).toString());
+		logger.info(dao.read(3).toString());
 	}
 	
 	@Test @Ignore
@@ -44,7 +44,7 @@ public class BoardDAOTest {
 		dao.update(board);
 	}
 	
-	@Test
+	@Test @Ignore
 	public void testDelete() throws Exception {
 		dao.delete(2);
 	}

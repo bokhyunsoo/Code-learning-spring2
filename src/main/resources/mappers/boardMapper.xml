@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	values(#{title},#{content},#{writer})
 	</insert>
 	
-	<select id="read" resultType="com.ex01.www.domain.BoardVO">
+	<select id="read" resultType="BoardVO">
 	select bno, title, content, writer, regdate, viewcnt
 	from tbl_board
 	where bno = #{bno}
@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	delete from tbl_board where bno = #{bno}
 	</delete>
 	
-	<select id="listAll" resultType="com.ex01.www.domain.BoardVO">
+	<select id="listAll" resultType="BoardVO">
 	select bno, title, content, writer, regdate, viewcnt
 	from tbl_board
 	where bno &gt; 0
