@@ -75,8 +75,8 @@ public class BoardController {
 		model.addAttribute("list", service.listAll());
 	}
 	
-	@RequestMapping(value="read", method = RequestMethod.GET)
-	public void listAll(@RequestParam("bno") int bno, Model model) throws Exception {
+	@RequestMapping(value="readPage", method = RequestMethod.GET)
+	public void listAll(@RequestParam("bno") int bno, Model model , @ModelAttribute("cri") Criteria cri) throws Exception {
 		model.addAttribute(service.read(bno));
 	}
 	
