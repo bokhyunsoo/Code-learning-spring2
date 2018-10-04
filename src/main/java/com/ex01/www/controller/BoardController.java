@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ex01.www.domain.BoardVO;
 import com.ex01.www.domain.Criteria;
 import com.ex01.www.domain.PageMaker;
+import com.ex01.www.domain.SearchCriteria;
 import com.ex01.www.service.BoardService;
 
 @Controller
