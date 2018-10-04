@@ -100,5 +100,28 @@ public class BoardController {
 		return "redirect:/board/listAll";
 	}
 	
+	@RequestMapping(value="removePage", method=RequestMethod.POST)
+	public String remove(@RequestParam Map map, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) throws Exception {
+		service.remove(map);
+		rttr.addFlashAttribute("page", cri.getPage());
+		rttr.addFlashAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		return "redirect:/board/listPage";
+	}
 	
+	@RequestMapping(value="modifyPage", method=RequestMethod.GET)
+	public String modifyPage(@RequestParam("bno") int bno, @ModelAttribute("cri") Criteria cri, Model model) throws Exception {
+		service.read(bno);
+		model.addAttribute("boardVO", service.read(bno));
+		return "board/modifyPage";
+	}
+	
+	@RequestMapping(value="modifyPage", method=RequestMethod.POST)
+	public String modifyPagePOST(@RequestParam Map map, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) throws Exception {
+		service.modify(map);
+		rttr.addFlashAttribute("page", cri.getPage());
+		rttr.addFlashAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		return "redirect:/board/listPage";
+	}
 }
