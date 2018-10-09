@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.ex01.www.domain.ReplyVO;
 
 @Repository
-public class ReplyDAOImpl {
+public class ReplyDAO {
 
 	@Autowired
 	private SqlSession session;

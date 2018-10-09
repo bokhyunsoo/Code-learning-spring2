@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ex01.www.domain.ReplyVO;
-import com.ex01.www.persistence.ReplyDAOImpl;
+import com.ex01.www.persistence.ReplyDAO;
 
 @Service
 public class ReplyService {
 	
 	@Autowired
-	private ReplyDAOImpl dao;
+	private ReplyDAO dao;
 	
 	public void create(ReplyVO vo) throws Exception {
 		dao.create(vo);
