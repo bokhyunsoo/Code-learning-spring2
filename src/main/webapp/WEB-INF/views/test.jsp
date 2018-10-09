@@ -34,7 +34,7 @@ function getAllList() {
 		$(data).each(
 			function() {
 				str += "<li data-rno='" + this.rno + "' class='replyLi'>"
-					+ this.rno + ":" + this.replytext
+					+ this.rno + ":<span>" + this.replytext + "</span>"
 					+ "<button>MOD</button></li>";
 					
 			}		
@@ -76,11 +76,58 @@ $(window).load(function(){
 		var reply = $(this).parent();
 		
 		var rno = reply.attr("data-rno");
-		var replytext = reply.text();
+		var replytext = $(reply).find('span').text();  //reply.text();
 		
 		$('.modal-title').text(rno);
 		$('#replytext').val(replytext);
 		$('#modDiv').show("slow");
+	});
+	
+	$('#replyDelBtn').on("click", function(){
+		var rno = $(".modal-title").text();
+		var replytext = $('#replytext').val();
+		
+		$.ajax({
+			type : 'delete',
+			url : '/replies/' + rno,
+			header : {
+				"Content-Type" : "application/json",
+				"x-HTTP-Method-Override" : "DELETE"
+			},
+			dataType : 'text',
+			success : function(result) {
+				console.log("result : " + result);
+				if(result == 'SUCCESS') {
+					alert("삭제 되었습니다.");
+					$('#modDiv').hide("slow");
+					getAllList();
+				}
+			}
+		});
+	});
+	
+	$('#replyModBtn').click(function(){
+		var rno = $(".modal-title").text();
+		var replytext = $('#replytext').val();
+		
+		$.ajax({
+			type : 'put',
+			url : '/replies/' + rno,
+			header : {
+				"Content-Type" : "application/json",
+				"x-HTTP-Method-Override" : "PUT"
+			},
+			dataType : 'text',
+			success : function(result) {
+				console.log("result : " + result);
+				if(result == 'SUCCESS') {
+					alert("수정 되었습니다.");
+					$('#modDiv').hide("slow");
+					//getAllList();
+					getPageList(replyPage);
+				}
+			}
+		});
 	});
 });
 </script>
